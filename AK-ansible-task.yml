@@ -1,0 +1,10 @@
+---
+#- hosts: wordpress
+#  become: yes
+#  roles:
+#  - site
+
+- hosts: wordpress
+  become: yes
+  roles:
+  - wp-install

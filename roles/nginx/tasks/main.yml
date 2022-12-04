@@ -1,0 +1,14 @@
+---
+# tasks file for nginx
+
+- name: Install Nginx
+  apt: name=nginx state=latest
+
+- name: Start Nginx
+  service: name=nginx state=started enabled=yes
+  
+- name: Generate index.html file
+  template: src=index.j2 dest={{ destin_folder }}/index.html mode=0644
+
+- name: Restart Nginx
+  service: name=nginx state=restarted

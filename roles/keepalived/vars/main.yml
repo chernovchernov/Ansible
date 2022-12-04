@@ -1,0 +1,13 @@
+---
+# vars file for keepalived
+#hosts: 192.168.31.81
+#vars:
+#  name_server: pi1
+#  state: MASTER
+#  priority: 100
+
+#hosts: 192.168.31.216
+#vars:
+#  name_server: pi2
+#  state: BACKUP
+#  priority: 200

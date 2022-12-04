@@ -1,0 +1,11 @@
+# tasks file for ha-proxy
+
+- name: Install haproxy
+  apt: name=haproxy state=latest
+
+- name: Copy haproxy config file server
+  copy: src={{ source_file }} dest={{ destin_folder }} mode=0644
+
+- name: Start haproxy
+  service: name=haproxy state=started enabled=yes
+

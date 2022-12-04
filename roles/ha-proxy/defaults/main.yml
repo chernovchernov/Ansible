@@ -1,0 +1,4 @@
+---
+# defaults file for ha-proxy
+
+destin_folder: /etc/haproxy

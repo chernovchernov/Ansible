@@ -1,0 +1,4 @@
+---
+# vars file for ha-proxy
+
+source_file: ~/ansible/roles/ha-proxy/files/haproxy.cfg

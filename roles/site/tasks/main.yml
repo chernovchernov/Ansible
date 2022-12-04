@@ -1,0 +1,44 @@
+---
+# tasks file for site
+
+- name: Install apache2
+  apt: name=apache2 state=latest
+
+- name: Install ghostscript 
+  apt: name=ghostscript state=latest
+
+- name: Install libapache2-mod-php 
+  apt: name=libapache2-mod-php state=latest
+
+- name: Install mysql-server 
+  apt: name=mysql-server state=latest
+
+- name: Install php 
+  apt: name=php state=latest
+
+- name: Install php-bcmath 
+  apt: name=php-bcmath state=latest
+
+- name: Install php-curl 
+  apt: name=php-curl state=latest
+
+- name: Install php-imagick 
+  apt: name=php-imagick state=latest
+
+- name: Install php-intl 
+  apt: name=php-intl state=latest
+
+- name: Install php-json 
+  apt: name=php-json state=latest
+
+- name: Install php-mbstring 
+  apt: name=php-mbstring state=latest
+
+- name: Install php-mysql 
+  apt: name=php-mysql state=latest
+
+- name: Install php-xml
+  apt: name=php-xml state=latest
+
+- name: Install php-zip
+  apt: name=php-zip state=latest

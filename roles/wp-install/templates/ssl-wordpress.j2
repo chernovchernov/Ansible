@@ -1,0 +1,10 @@
+<VirtualHost *:443>
+
+servername {{ servername }}
+documentroot /var/www/wordpress
+
+   SSLEngine on
+   SSLCertificateFile /etc/ssl/certs/wordpress.pem
+   SSLCertificateKeyFile /etc/ssl/private/wordpress.key
+
+</VirtualHost>
