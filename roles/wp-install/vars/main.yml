@@ -1,2 +1,4 @@
 ---
 # vars file for wp-install
+
+source_file_dop: ~/Ansible/roles/wp-install/files/dop_file.txt

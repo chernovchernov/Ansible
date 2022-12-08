@@ -1,4 +1,10 @@
 ---
 # defaults file for wp-install
 
-destin_folder: /etc/apache2/sites-available/
+destin_folder_ap2: /etc/apache2/sites-available/
+
+destin_folder_mysql: /home/boris
+
+destin_folder_wp: /var/www/wordpress/
+
+destin_folder_dop: /home/boris

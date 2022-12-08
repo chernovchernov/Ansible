@@ -1,0 +1,44 @@
+define('AUTH_KEY',         'NObD;.Z,Yk+3?i13R559+I$/M&g.^GiiX5nEQ?`sR:.kZCqL1X ~(H7C9,-|Ip?g');
+define('SECURE_AUTH_KEY',  '3hY3#LeO3Q&[US{jt_}jJ_`bZaUSc6@sezNH|e;n/Fjda-t3aUJ_1]>,+YfB2!-z');
+define('LOGGED_IN_KEY',    '*w=nwp:iTx8yi}?aoqLlm:=;,MZyG?03Ja!w.Qr5q8c|ArLX[jO54|`n^K2M+PNS');
+define('NONCE_KEY',        '*sf1(Wb;+5p@T1[2-:8%33y-KE!l<zBT):#XBQ_L4gWwz=WNT,|5%NaT>`&sbgq=');
+define('AUTH_SALT',        'c{+1wm$.Dl}c<#wKO+Hzp5L/3=*4)o7};z]@,0f;S:mw<n BGMX:uA-G:&gL9c!i');
+define('SECURE_AUTH_SALT', 'b?sTN+Mc-rPSY+X:=+{l<_Jj0(Red|X.%kL #O A2PmM+g}@2&n22)d-_0r`m9?V');
+define('LOGGED_IN_SALT',   '@`D+qx*03byKX[2vP!d(6jk):Ai+.ggZJGb-6=+l{6,nY,fCDoB^,q nD-]0gd7b');
+define('NONCE_SALT',       '|+W2[w/yUu`:Bi3$[h.1ydmBP8<MtoW@(u9cYvjmK-FUa/r(S6j;NqSylJe+JG[9');
+
+/**
+ * WordPress database table prefix.
+ *
+ * You can have multiple installations in one database if you give each
+ * a unique prefix. Only numbers, letters, and underscores please!
+ */
+$table_prefix = 'wp_';
+
+/**
+ * For developers: WordPress debugging mode.
+ *
+ * Change this to true to enable the display of notices during development.
+ * It is strongly recommended that plugin and theme developers use WP_DEBUG
+ * in their development environments.
+ *
+ * For information on other constants that can be used for debugging,
+ * visit the documentation.
+ *
+ * @link https://wordpress.org/support/article/debugging-in-wordpress/
+ */
+define( 'WP_DEBUG', false );
+
+/* Add any custom values between this line and the "stop editing" line. */
+
+
+
+/* That's all, stop editing! Happy publishing. */
+
+/** Absolute path to the WordPress directory. */
+if ( ! defined( 'ABSPATH' ) ) {
+        define( 'ABSPATH', __DIR__ . '/' );
+}
+
+/** Sets up WordPress vars and included files. */
+require_once ABSPATH . 'wp-settings.php';
