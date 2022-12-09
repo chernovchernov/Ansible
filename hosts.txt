@@ -1,4 +1,4 @@
 [wordpress]
-ha1 ansible_host=192.168.31.81
-ha2 ansible_host=192.168.31.216
+ha1 ansible_host=192.168.31.251
+ha2 ansible_host=192.168.31.121
 

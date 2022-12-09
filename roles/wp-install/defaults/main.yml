@@ -1,7 +1,7 @@
 ---
 # defaults file for wp-install
 
-destin_folder_ap2: /etc/apache2/sites-available/
+destin_folder_a2: /etc/apache2/sites-available/
 
 destin_folder_mysql: /home/boris
 

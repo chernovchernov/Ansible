@@ -77,7 +77,7 @@
 - block:
 
   - name: Writing IP adress to the etc/hosts file
-    shell: echo 192.168.31.81 www.one.wordpress.ru one.wordpress.ru >> /etc/hosts 
+    shell: echo 192.168.31.251 www.one.wordpress.ru one.wordpress.ru >> /etc/hosts 
 
   - name: Create WordPress Config File
     template: src=wordpress.j2 dest={{ destin_folder_a2 }}/wordpress.conf mode=0644
@@ -90,12 +90,12 @@
     vars:
       servername: one.wordpress.ru
 
-  when: ansible_all_ipv4_addresses == ['192.168.31.81']
+  when: ansible_all_ipv4_addresses == ['192.168.31.251']
 
 - block:
 
   - name: Writing IP adress to the etc/hosts file
-    shell: echo 192.168.31.216 www.two.wordpress.ru two.wordpress.ru >> /etc/hosts
+    shell: echo 192.168.31.121 www.two.wordpress.ru two.wordpress.ru >> /etc/hosts
 
   - name: Create WordPress Config File
     template: src=wordpress.j2 dest={{ destin_folder_a2 }}/wordpress.conf mode=0644
@@ -108,15 +108,16 @@
     vars:
       servername: two.wordpress.ru
 
-  when: ansible_all_ipv4_addresses == ['192.168.31.216']
+  when: ansible_all_ipv4_addresses == ['192.168.31.121']
+
 
 - name: Enable the site
   shell: sudo a2ensite wordpress
 
-- name: Enable URL rewrite 
+- name: Enable URL rewrite
   shell: sudo a2enmod rewrite
 
-- name: Disable the default “It Works” site  
+- name: Disable the default “It Works” site
   shell: sudo a2dissite 000-default
 
 - name: Activate SSL config
@@ -127,6 +128,8 @@
 
 - name: Apache2 Start
   service: name=apache2 state=started
+
+
 
 - block:
 
@@ -142,10 +145,8 @@
 
   - name: Configure WordPress to connect to the database
     shell: sudo -u www-data cp /var/www/wordpress/wp-config-sample.php /var/www/wordpress/wp-config.php
-
   - name: Change DB Name
     shell: sudo -u www-data sed -i 's/database_name_here/SuperData/' /var/www/wordpress/wp-config.php
-
   - name: Change User Name
     shell: sudo -u www-data sed -i 's/username_here/Johny/' /var/www/wordpress/wp-config.php
 
@@ -153,7 +154,7 @@
     shell: sudo -u www-data sed -i 's/password_here/1111/' /var/www/wordpress/wp-config.php
 
 
-  when: ansible_all_ipv4_addresses == ['192.168.31.81']
+  when: ansible_all_ipv4_addresses == ['192.168.31.251']
 
 - block:
 
@@ -164,8 +165,8 @@
       user: Ivan
       passwrd: 2222
 
- - name: MySQL
-   shell: sudo mysql -u root < /home/boris/mysql.txt
+  - name: MySQL
+    shell: sudo mysql -u root < /home/boris/mysql.txt
 
   - name: Configure WordPress to connect to the database
     shell: sudo -u www-data cp /var/www/wordpress/wp-config-sample.php /var/www/wordpress/wp-config.php
@@ -179,7 +180,7 @@
   - name: Change Password
     shell: sudo -u www-data sed -i 's/password_here/2222/' /var/www/wordpress/wp-config.php
 
-  when: ansible_all_ipv4_addresses == ['192.168.31.216']
+  when: ansible_all_ipv4_addresses == ['192.168.31.121']
 
 - name: Delete Strings from WP Config.php
   shell: sudo sed '51,$d' /var/www/wordpress/wp-config.php > /var/www/wordpress/wp-config_dop.php
@@ -192,3 +193,9 @@
 
 - name: Union of Two Files WP Config
   shell: cat /var/www/wordpress/wp-config_dop.php /home/boris/dop_file.txt > /var/www/wordpress/wp-config.php
+
+- name: Delete WP-Config_dop.php
+  shell: sudo rm /var/www/wordpress/wp-config_dop.php
+
+- name: Apache2 Restart
+  service: name=apache2 state=restarted
