@@ -1,38 +1,92 @@
 WordPress
-=========
+==========
 
 This playbook helps install WordPress on two linux servers with Http security
 
 Requirements
-------------
+-------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+You need open source projects to work properly:
 
-Role Variables
---------------
+- Server: ubuntu-20.04.4-live-server-amd64 ([Ubuntu])
+- Ansible [core 2.12.9] ([Ansible])
+- python version = 3.8.10 
+- jinja version = 2.10.1
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
-
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
-
-Example Playbook
+Launch Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+Make sure that you have connection to your servers from ansible master server with command:
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+```sh
+ansible all -m ping
+```
+When all setting is right answer will be:
+
+```
+Server1 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+Server2 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+```
+
+Open Playbook:
+
+```
+sudo nano roles/wp-install/tasks/main.yml
+```
+
+Write your IP adresses in the following strings:
+
+_For Server 1 (change 192.168.31.251 to your IP adress):_
+```
+80     shell: echo 192.168.31.251 www.one.wordpress.ru one.wordpress.ru >> /etc/hosts
+93   when: ansible_all_ipv4_addresses == ['192.168.31.251']
+157   when: ansible_all_ipv4_addresses == ['192.168.31.251']
+```
+_For Server 2 (change 192.168.31.121 to your IP adress):_
+```
+98     shell: echo 192.168.31.121 www.two.wordpress.ru two.wordpress.ru >> /etc/hosts
+111   when: ansible_all_ipv4_addresses == ['192.168.31.121']
+183   when: ansible_all_ipv4_addresses == ['192.168.31.121']
+```
+
+Run playbook:
+
+```
+ansible-playbook AK-ansible-task.yml -kK
+```
+
+> Note: Change IP adresses at hosts file in your computer
+> "ip_address_server1" one.wordpress.ru
+> "ip_adress_server2" two.wordpress.ru
+
+
+To check please open following links:
+
+www.one.wordpress.ru
+www.two.wordpress.ru
 
 License
--------
+--------
 
 BSD
 
-Author Information
-------------------
+[Ansible]: <https://docs.ansible.com>
+[Ubuntu]: <https://ubuntu.com>
+[site1]: <https://one.wordpress.ru>
+[site2]: <https://two.wordpress.ru>
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Author Information
+-------------------
+
+Boris Chernov <chernov001@gmail.com>
