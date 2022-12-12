@@ -1,9 +1,0 @@
----
-# handlers file for nginx
-
-- name: Enable Nginx
-  service: name=nginx state=enable
-
-
-- name: Restart Nginx 
-  service: name=nginx state=restarted

@@ -1,8 +1,0 @@
----
-# tasks file for ssl
-
-- name: 123
-  shell: echo 123 > 123.txt
-
-- name: Remove 123
-  shell: rm 123.txt
